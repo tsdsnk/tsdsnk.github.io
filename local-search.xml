@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>About this blog</title>
+    <link href="/2022/12/18/About-this-blog/"/>
+    <url>/2022/12/18/About-this-blog/</url>
+    
+    <content type="html"><![CDATA[<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2><span id="more"></span><p>记录下第一次写博客，也是刚刚开始使用markdown</p><h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>使用<a href="https://hexo.io/zh-cn/">Hexo</a>部署在个人GitHub库中</p><p>使用<a href="https://hexo.fluid-dev.com/">Fluid</a>主题，<a href="https://hexo.fluid-dev.com/docs/start/">参考手册</a></p><p>图片借助<a href="https://picgo.github.io/PicGo-Doc/">PicGo</a>存储在个人GitHub库中</p><h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p><del>为了整理知识</del></p><p>为了玩</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hello World</title>
     <link href="/2022/12/17/hello-world/"/>
     <url>/2022/12/17/hello-world/</url>
