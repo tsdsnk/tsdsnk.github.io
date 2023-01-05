@@ -16,16 +16,20 @@
   <meta name="author" content="tsdsnk">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="0. 前言0.1. 参考书目 现代操作系统(Modern Operating System) (第4版)  1. 进程与线程1.1. 进程1.1.1. 进程的创建 导致进程创建的4种主要事件  系统初始化  正在运行的程序执行了创建进程的系统调用  用户请求创建一个新的进程 如交互式系统键入命令或点击图标  一个批处理作业的初始化 仅在大型机的批处理系统中使用，用户可以提交批处理作业。当操作系统认">
+<meta property="og:type" content="article">
 <meta property="og:title" content="操作系统">
 <meta property="og:url" content="http://example.com/2022/12/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="tsdsnk">
+<meta property="og:description" content="0. 前言0.1. 参考书目 现代操作系统(Modern Operating System) (第4版)  1. 进程与线程1.1. 进程1.1.1. 进程的创建 导致进程创建的4种主要事件  系统初始化  正在运行的程序执行了创建进程的系统调用  用户请求创建一个新的进程 如交互式系统键入命令或点击图标  一个批处理作业的初始化 仅在大型机的批处理系统中使用，用户可以提交批处理作业。当操作系统认">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210735.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210755.png">
 <meta property="article:published_time" content="2022-12-31T11:44:57.000Z">
-<meta property="article:modified_time" content="2022-12-31T11:46:09.546Z">
+<meta property="article:modified_time" content="2023-01-05T13:29:22.797Z">
 <meta property="article:author" content="tsdsnk">
-<meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210735.png">
   
   
   
@@ -218,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          1.5k 字
         
       </span>
     
@@ -263,7 +267,82 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><h3 id="0-1-参考书目"><a href="#0-1-参考书目" class="headerlink" title="0.1. 参考书目"></a>0.1. 参考书目</h3><ul>
+<li>现代操作系统(Modern Operating System) (第4版)</li>
+</ul>
+<h2 id="1-进程与线程"><a href="#1-进程与线程" class="headerlink" title="1. 进程与线程"></a>1. 进程与线程</h2><h3 id="1-1-进程"><a href="#1-1-进程" class="headerlink" title="1.1. 进程"></a>1.1. 进程</h3><h4 id="1-1-1-进程的创建"><a href="#1-1-1-进程的创建" class="headerlink" title="1.1.1. 进程的创建"></a>1.1.1. 进程的创建</h4><ul>
+<li><p>导致进程创建的4种主要事件</p>
+<ul>
+<li><p>系统初始化</p>
+</li>
+<li><p>正在运行的程序执行了创建进程的系统调用</p>
+</li>
+<li><p>用户请求创建一个新的进程</p>
+<p>如交互式系统键入命令或点击图标</p>
+</li>
+<li><p>一个批处理作业的初始化</p>
+<p>仅在大型机的批处理系统中使用，用户可以提交批处理作业。当操作系统认为资源足够运行另一个作业时，它会新建一个进程并运行输入队列的下一个作业</p>
+</li>
+</ul>
+</li>
+<li><p>地址空间</p>
+<ul>
+<li>在UNIX中<ul>
+<li>不可写的内存区是共享的</li>
+<li>或者，子进程共享父进程的所有内存，但写时复制</li>
+</ul>
+</li>
+<li>在Windows中，从一开始父进程的地址空间和子进程的地址空间就是不同的</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-2-进程的终止"><a href="#1-1-2-进程的终止" class="headerlink" title="1.1.2. 进程的终止"></a>1.1.2. 进程的终止</h4><ul>
+<li>进程终止的原因<ul>
+<li>正常退出</li>
+<li>出错退出，自愿</li>
+<li>严重错误，非自愿</li>
+<li>被其他进程杀死</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-3-进程的层次结构"><a href="#1-1-3-进程的层次结构" class="headerlink" title="1.1.3. 进程的层次结构"></a>1.1.3. 进程的层次结构</h4><ul>
+<li><p>在UNIX中，树状结构</p>
+<ul>
+<li><p>在启动时，init出现在启动映像中，读入一个说明终端数量的文件。接着为每一个终端创建一个新进程，等待用户登录。如果有一个用户登录成功则执行一个shell</p>
+</li>
+<li><p>进程和其子进程组成一个进程组，用户从键盘发出的信号(如Ctrl + C)被发送给当前与键盘相关的进程组中的所有成员。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">pid_t</span> 	<span class="hljs-title function_">getpgid</span><span class="hljs-params">(<span class="hljs-type">pid_t</span> pid)</span>;				 <span class="hljs-comment">//获取pid的进程组(进程组名一般是某个进程pid)</span><br><span class="hljs-type">int</span> 	<span class="hljs-title function_">setpgid</span><span class="hljs-params">(<span class="hljs-type">pid_t</span> pid, <span class="hljs-type">pid_t</span> pgid)</span>;  <span class="hljs-comment">//设置进程组</span><br></code></pre></td></tr></table></figure>
+
+<p>一个设置进程组例子如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/types.h&gt;</span>  </span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/wait.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br><br>    <span class="hljs-type">pid_t</span> pid;<br><br>    <span class="hljs-keyword">if</span>((pid = fork()) &lt; <span class="hljs-number">0</span>)&#123;<br>        perror(<span class="hljs-string">&quot;fork&quot;</span>);<br>        <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child: pid:%d\tgroup id:%d\n&quot;</span>, getpid(), getpgid(<span class="hljs-number">0</span>));<br>        sleep(<span class="hljs-number">3</span>);<br>        setpgid(getpid(), getpid());<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Child after change: pid:%d\tgroup id:%d\n&quot;</span>, getpid(), getpgid(<span class="hljs-number">0</span>));<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Parent: pid:%d\tgroup id:%d\n&quot;</span>, getpid(), getpgid(<span class="hljs-number">0</span>));<br>        sleep(<span class="hljs-number">2</span>);<br>        wait(<span class="hljs-number">0</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>Windows中，没有进程层次的概念，所有进程地位是相同的。</p>
+<p>创建进程时父进程会得到一个特殊的令牌(称为句柄)，可以控制子进程。令牌可以传送给其他进程</p>
+</li>
+</ul>
+<h4 id="1-1-4-进程的状态"><a href="#1-1-4-进程的状态" class="headerlink" title="1.1.4. 进程的状态"></a>1.1.4. 进程的状态</h4><p>注意哪些状态转换不存在(如阻塞不能直接运行)</p>
+<ul>
+<li><p>五状态</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210735.png" srcset="/img/loading.gif" lazyload alt="五状态"></p>
+</li>
+<li><p>七状态</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210755.png" srcset="/img/loading.gif" lazyload alt="七状态"></p>
+</li>
+</ul>
+<h4 id="1-1-5-进程的实现"><a href="#1-1-5-进程的实现" class="headerlink" title="1.1.5. 进程的实现"></a>1.1.5. 进程的实现</h4><ul>
+<li>操作系统维护着一张表格，即进程表。每个进程占用一个表项(也称进程控制块)，记录着进程的一些状态。</li>
+<li>对于中断发生时:<ul>
+<li>将进程信息压入堆栈，跳转到中断向量的地址。(这些任务由__硬件__完成)</li>
+<li>(跳转到的软件)将堆栈中的信息保存到进程表项中，并删除堆栈中数据。</li>
+<li>将堆栈指针指向进程处理程序所使用的临时堆栈</li>
+<li>C语言编写的中断服务程序</li>
+<li>调用调度程序</li>
+<li>为当前的进程装入寄存器值以及内存映射。</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
@@ -271,13 +350,27 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/OS/">#OS</a>
-      
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%80%83%E7%A0%94/" class="category-chain-item">考研</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
     </div>
+  
   
 </div>
 
@@ -288,6 +381,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/01/04/%E9%AB%98%E6%95%B0/" title="高数">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">高数</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
