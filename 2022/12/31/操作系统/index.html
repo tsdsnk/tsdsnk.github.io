@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230107212343.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230107213045.png">
 <meta property="article:published_time" content="2022-12-31T11:44:57.000Z">
-<meta property="article:modified_time" content="2023-01-07T13:38:58.479Z">
+<meta property="article:modified_time" content="2023-01-09T08:27:25.204Z">
 <meta property="article:author" content="tsdsnk">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210735.png">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          10k 字
+          13k 字
         
       </span>
     
@@ -516,7 +516,7 @@
 </li>
 <li><p>严格轮换法</p>
 <p>两个进程轮流进入临界区。</p>
-<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs isbl"><span class="hljs-function"><span class="hljs-title">while</span>(<span class="hljs-variable"><span class="hljs-literal">true</span></span>)&#123;</span><br><span class="hljs-function">	<span class="hljs-title">while</span>(<span class="hljs-variable">turn</span> <span class="hljs-variable">!</span>= <span class="hljs-number">0</span>);</span><br><span class="hljs-function">	<span class="hljs-title">critical_region</span>();		\\临界区</span><br><span class="hljs-function">	<span class="hljs-variable">turn</span> = <span class="hljs-number">1</span>;</span><br><span class="hljs-function">	<span class="hljs-title">noncritical_region</span>();</span><br><span class="hljs-function">&#125;</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">while</span>(<span class="hljs-variable"><span class="hljs-literal">true</span></span>)&#123;</span><br><span class="hljs-function">	<span class="hljs-title">while</span>(<span class="hljs-variable"><span class="hljs-literal">true</span></span> <span class="hljs-variable">!</span>= <span class="hljs-number">1</span>);</span><br><span class="hljs-function">	<span class="hljs-title">critical_region</span>();</span><br><span class="hljs-function">	<span class="hljs-variable">turn</span> = <span class="hljs-number">0</span>;</span><br><span class="hljs-function">	<span class="hljs-title">noncritical_region</span>();</span><br><span class="hljs-function">&#125;</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>	<span class="hljs-keyword">while</span>(turn != <span class="hljs-number">0</span>);<br>	critical_region();		\\临界区<br>	turn = <span class="hljs-number">1</span>;<br>	noncritical_region();<br>&#125;<br><br><span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>	<span class="hljs-keyword">while</span>(turn != <span class="hljs-number">1</span>);<br>	critical_region();<br>	turn = <span class="hljs-number">0</span>;<br>	noncritical_region();<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这种方案在某一个进程快很多时，也不得不等待另一个进程，即便他们都不在临界区。</p>
 </li>
@@ -629,7 +629,79 @@
 <p>删除节点(当对A,B没有更多读操作时才可以删除)</p>
 <p><img src="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230107213045.png" srcset="/img/loading.gif" lazyload></p>
 <p>但是多长时间所有读操作才会读完这些节点，可以规定一个最大引用(该树)时间。如果在读端临界区规定不能够阻塞或休眠，则只需等待所有读操作完成一次上下文切换即可。</p>
-<h3 id="1-4-调度"><a href="#1-4-调度" class="headerlink" title="1.4. 调度"></a>1.4. 调度</h3>
+<h3 id="1-4-调度"><a href="#1-4-调度" class="headerlink" title="1.4. 调度"></a>1.4. 调度</h3><p>$$<br>\begin{aligned}<br>&amp; T_{周转时间} &#x3D; T_{完成时间} - T_{到达时间} \<br>&amp; T_{响应时间} &#x3D; T_{开始时间} - T_{到达时间}<br>\end{aligned}<br>$$</p>
+<h4 id="1-4-1-批处理系统"><a href="#1-4-1-批处理系统" class="headerlink" title="1.4.1. 批处理系统"></a>1.4.1. 批处理系统</h4><ul>
+<li><p>先来先服务</p>
+<ul>
+<li>易于理解以及应用</li>
+<li>不能协调计算密集型和I&#x2F;O密集型</li>
+</ul>
+</li>
+<li><p>最短作业优先(非抢占)</p>
+<p>​		此方法一般需要预知作业时间。在大型批处理系统中，如保险公司处理索赔的一批作业，由于每天都在做类似工作因而可以精确预测。</p>
+<p>​		此方法可使得平均周转时间最短，如时间为$a,b,c,d$的四个作业，平均周转时间为$\frac{1}{4}(4a+3b+2c+d)$</p>
+</li>
+<li><p>最短剩余作业优先(抢占式)</p>
+<p>​		仍需要预知时间</p>
+</li>
+</ul>
+<h4 id="1-4-2-交互式系统"><a href="#1-4-2-交互式系统" class="headerlink" title="1.4.2. 交互式系统"></a>1.4.2. 交互式系统</h4><ul>
+<li><p>轮转调度</p>
+<p>​		核心为时间片的长短，平衡切换代价及响应时间</p>
+</li>
+<li><p>优先级调度</p>
+<ul>
+<li><p>为了防止高优先级无休止运行</p>
+<ul>
+<li>可以在每次时钟中断之后降低优先级</li>
+<li>可以为每个进程赋予一个允许运行的最大时间片，用完这个时间片则允许次高优先级</li>
+</ul>
+</li>
+<li><p>优先级也可以由系统动态确定</p>
+<p>​		如为了尽可能使I&#x2F;O密集型提前工作，当这样的进程需要CPU时应立即分给他CPU。一种算法是，将每个进程赋予优先级$\frac{1}{f}$，$f$是该进程在上一次时间片中所占的部分。</p>
+</li>
+</ul>
+</li>
+<li><p>多级队列</p>
+<p>早期内存只能存放一个进程，出现进程切换速度较慢的情况。</p>
+<p>此时为CPU密集型进程分配长时间片比分配短时间片效率较高，但长时间片又会影响到响应时间，因而提出了如下的解决办法:</p>
+<p>​		为高优先级分配1个时间片，次高分配2个，4个，以此类推(由于I&#x2F;O密集型具有较高的优先级)。当进程用完则被分到下一优先级。对于一些开始时运行较长时间而后需要交互的进程，为了防止其一直处于被惩罚的状态，可以在终端上每次按下回车键时将其转移到最高优先级。</p>
+</li>
+<li><p>最短进程优先</p>
+<p>仍然需要预知时间。</p>
+<p>​		一种办法是根据过去行为推测。记当前估计为$T_i$，测量到其下次运行时间为$t_{i+1}$，则更新估计时间为$\alpha T_i + (1 - \alpha)t_{i+1}$</p>
+</li>
+<li><p>保证算法</p>
+<p>​		保证每个用户能获得CPU的$\frac{1}{n}$，跟踪自进程创建以来使用的CPU时间，计算其应获得的CPU。运行二者之比最低的进程直至其超过最接近的竞争者</p>
+</li>
+<li><p>彩票调度</p>
+<p>​		为每个进程分配彩票，调用拥有选中彩票的进程。</p>
+<p>​		这种调度在有新进程时是反应迅速的。它也可以按比例划分CPU的使用</p>
+</li>
+<li><p>公平分享</p>
+<p>​		不仅仅考虑进程，而是考虑用户，每个用户有相同的机会，然后才去调度用户所拥有的进程</p>
+</li>
+</ul>
+<h4 id="1-4-3-实时系统"><a href="#1-4-3-实时系统" class="headerlink" title="1.4.3. 实时系统"></a>1.4.3. 实时系统</h4><p>​		实时系统通常分为硬实时和软实时。前者必须满足绝对的截止时间，而后者可以容忍偶尔错失的截止时间。</p>
+<p>​		实时系统中的事件可以划分为周期性的和非周期性的。对于周期性事件$i$，以周期$P_i$发生，需要处理时间为$C_i$，则只有满足如下条件时才能处理负载，即这个系统是可调度的:<br>$$<br>\sum_{i&#x3D;1}^m \frac{C_i}{P_i} \leq 1<br>$$<br>​		实时系统的调度可以是静态的，也可以是动态的。</p>
+<h4 id="1-4-4-策略和机制"><a href="#1-4-4-策略和机制" class="headerlink" title="1.4.4. 策略和机制"></a>1.4.4. 策略和机制</h4><p>​		我们可以使得调度策略和调度机制分离，也就是将调度算法以某种形式参数化，而参数让用户进程填写。</p>
+<p>​		如内核使用优先级调度算法，并提供了可以改变优先级的系统调用。这样尽管父进程本身并不参与调度，但他可以制定调度子进程的策略。</p>
+<h4 id="1-4-5-线程调度"><a href="#1-4-5-线程调度" class="headerlink" title="1.4.5. 线程调度"></a>1.4.5. 线程调度</h4><ul>
+<li><p>用户线程</p>
+<p>用户线程的调度由运行时系统决定，可以选择上述算法的任何一种，但缺乏时钟中断，内核并不知道线程的存在。</p>
+</li>
+<li><p>内核级线程</p>
+<p>对于某个线程被阻塞，对于同等重要的线程，最好倾向于同一进程以减小切换开销。但内核也可以不考虑线程所属的进程</p>
+</li>
+</ul>
+<h3 id="1-5-经典的IPC问题"><a href="#1-5-经典的IPC问题" class="headerlink" title="1.5. 经典的IPC问题"></a>1.5. 经典的IPC问题</h3><h4 id="1-5-1-哲学家就餐问题"><a href="#1-5-1-哲学家就餐问题" class="headerlink" title="1.5.1. 哲学家就餐问题"></a>1.5.1. 哲学家就餐问题</h4><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-comment">#define N			5</span><br><span class="hljs-comment">#define LEFT		(i+N-1) % N</span><br><span class="hljs-comment">#define RIGHT		(i+1) % N</span><br><span class="hljs-comment">#define THINKING	0</span><br><span class="hljs-comment">#define HUNGRY		1</span><br><span class="hljs-comment">#define EATING		2</span><br>typedef int segmaphore;<br>int <span class="hljs-keyword">state</span>[N];<br>semaphore mutex = <span class="hljs-number">1</span>;<br>semaphore s[N];<br><br>void philosopher(int i)&#123;<br>	while(true)&#123;<br>		// 哲学家进程<br>	&#125;<br>&#125;<br><br>void take_forks(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = HUNGRY;<br>	test(i);<br>	V(&amp;mutex);<br>	P(&amp;s[i]);<br>&#125;<br><br>void put_fork(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = THINKING;<br>	test(LEFT);				// 检查左右是否可以吃(唤醒)<br>	test(RIGHT);<br>	up(&amp;mutex);<br>&#125;<br><br>void test(int i)&#123;<br>	if(<span class="hljs-keyword">state</span>[i] == HUNGRY &amp;&amp; <span class="hljs-keyword">state</span>[LEFT] != EATING &amp;&amp; <span class="hljs-keyword">state</span>[RIGHT] != EATING)&#123;<br>		<span class="hljs-keyword">state</span>[i] = EATING;<br>		V(&amp;s[i]);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-5-2-读者-写者问题"><a href="#1-5-2-读者-写者问题" class="headerlink" title="1.5.2. 读者-写者问题"></a>1.5.2. 读者-写者问题</h4><p>当写者进入时，其他进程禁止进入。</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">typedef <span class="hljs-built_in">int</span> semaphore;<br>semaphore mutex = <span class="hljs-number">1</span>;<br>semaphore db = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> rc = <span class="hljs-number">0</span>;						<span class="hljs-comment">// 正在读或写的进程数目</span><br>void reader(void)&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		rc = rc + <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(rc<span class="hljs-operator"> == </span><span class="hljs-number">1</span>)&#123;<br>			<span class="hljs-constructor">P(&amp;<span class="hljs-params">db</span>)</span>;<br>		&#125;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		read<span class="hljs-constructor">_data_base()</span>;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		rc = rc - <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(rc<span class="hljs-operator"> == </span><span class="hljs-number">0</span>)&#123;<br>			<span class="hljs-constructor">V(&amp;<span class="hljs-params">db</span>)</span>;<br>		&#125;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		use<span class="hljs-constructor">_data_read()</span>;<br>	&#125;<br>&#125;<br><br>void writer(void)&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>		think<span class="hljs-constructor">_up_data()</span>;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">db</span>)</span>;					<span class="hljs-comment">// 这里不需要mutex是因为reader中rc==1会P(&amp;db)</span><br>		write<span class="hljs-constructor">_data_base()</span>;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">db</span>)</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-内存管理"><a href="#2-内存管理" class="headerlink" title="2. 内存管理"></a>2. 内存管理</h2>
                 
               </div>
             
