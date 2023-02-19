@@ -27,8 +27,9 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210755.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230107212343.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230107213045.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/2018040414344052.jpg">
 <meta property="article:published_time" content="2022-12-31T11:44:57.000Z">
-<meta property="article:modified_time" content="2023-01-09T08:27:25.204Z">
+<meta property="article:modified_time" content="2023-02-12T08:24:41.783Z">
 <meta property="article:author" content="tsdsnk">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230105210735.png">
@@ -224,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          16k 字
         
       </span>
     
@@ -273,7 +274,7 @@
 <li>现代操作系统(Modern Operating System) (第4版)</li>
 </ul>
 <h2 id="1-进程与线程"><a href="#1-进程与线程" class="headerlink" title="1. 进程与线程"></a>1. 进程与线程</h2><h3 id="1-1-进程"><a href="#1-1-进程" class="headerlink" title="1.1. 进程"></a>1.1. 进程</h3><p>​		我们假设进程之间彼此是有敌意的，他们可能所属不同的用户，会相互争夺资源或相互破坏。</p>
-<p>​		<strong>用户态能访问特定的寄存器，而非不能访问，否则正常代码也不能执行。</strong></p>
+<p>​		用户态能访问特定的寄存器，而非不能访问，否则正常代码也不能执行。</p>
 <h4 id="1-1-1-进程的创建"><a href="#1-1-1-进程的创建" class="headerlink" title="1.1.1. 进程的创建"></a>1.1.1. 进程的创建</h4><ul>
 <li><p>导致进程创建的4种主要事件</p>
 <ul>
@@ -339,7 +340,7 @@
 </li>
 <li><p>对于中断发生时:</p>
 <ul>
-<li><p>将进程信息压入堆栈，跳转到中断向量的地址。(这些任务由<strong>硬件</strong>完成)</p>
+<li><p>将进程信息压入堆栈，跳转到中断向量的地址。(这些任务由<u>硬件</u>完成)</p>
 </li>
 <li><p>(跳转到的软件)将堆栈中的信息保存到进程表项中，并删除堆栈中数据。</p>
 </li>
@@ -483,7 +484,7 @@
 </li>
 <li><p>当某个用户线程发生中断时，被中断的CPU切换进内核态。</p>
 <p>​		若被中断的进程对引起该中断的事件不感兴趣，则在中断处理程序结束后，将被中断的线程恢复到原状态。</p>
-<p>​		若被中断的进程对中断感兴趣，那么被中断的<strong>线程</strong>就不再启动，代之为挂起的被中断的<strong>线程</strong>。而运行时系统则启动对应的<strong>虚拟CPU</strong>，此时被中断的线程保存在<strong>堆栈</strong>(而非线程表，线程表是运行时系统维护的)中。随后运行时系统决定启动哪个线程。</p>
+<p>​		若被中断的进程对中断感兴趣，那么被中断的<u>线程</u>就不再启动，代之为挂起的被中断的<u>线程</u>。而运行时系统则启动对应的<u>虚拟CPU</u>，此时被中断的线程保存在<u>堆栈</u>(而非线程表，线程表是运行时系统维护的)中。随后运行时系统决定启动哪个线程。</p>
 </li>
 </ul>
 </li>
@@ -694,14 +695,142 @@
 <p>对于某个线程被阻塞，对于同等重要的线程，最好倾向于同一进程以减小切换开销。但内核也可以不考虑线程所属的进程</p>
 </li>
 </ul>
-<h3 id="1-5-经典的IPC问题"><a href="#1-5-经典的IPC问题" class="headerlink" title="1.5. 经典的IPC问题"></a>1.5. 经典的IPC问题</h3><h4 id="1-5-1-哲学家就餐问题"><a href="#1-5-1-哲学家就餐问题" class="headerlink" title="1.5.1. 哲学家就餐问题"></a>1.5.1. 哲学家就餐问题</h4><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-comment">#define N			5</span><br><span class="hljs-comment">#define LEFT		(i+N-1) % N</span><br><span class="hljs-comment">#define RIGHT		(i+1) % N</span><br><span class="hljs-comment">#define THINKING	0</span><br><span class="hljs-comment">#define HUNGRY		1</span><br><span class="hljs-comment">#define EATING		2</span><br>typedef int segmaphore;<br>int <span class="hljs-keyword">state</span>[N];<br>semaphore mutex = <span class="hljs-number">1</span>;<br>semaphore s[N];<br><br>void philosopher(int i)&#123;<br>	while(true)&#123;<br>		// 哲学家进程<br>	&#125;<br>&#125;<br><br>void take_forks(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = HUNGRY;<br>	test(i);<br>	V(&amp;mutex);<br>	P(&amp;s[i]);<br>&#125;<br><br>void put_fork(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = THINKING;<br>	test(LEFT);				// 检查左右是否可以吃(唤醒)<br>	test(RIGHT);<br>	up(&amp;mutex);<br>&#125;<br><br>void test(int i)&#123;<br>	if(<span class="hljs-keyword">state</span>[i] == HUNGRY &amp;&amp; <span class="hljs-keyword">state</span>[LEFT] != EATING &amp;&amp; <span class="hljs-keyword">state</span>[RIGHT] != EATING)&#123;<br>		<span class="hljs-keyword">state</span>[i] = EATING;<br>		V(&amp;s[i]);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="1-5-经典的IPC问题"><a href="#1-5-经典的IPC问题" class="headerlink" title="1.5. 经典的IPC问题"></a>1.5. 经典的IPC问题</h3><h4 id="1-5-1-哲学家就餐问题"><a href="#1-5-1-哲学家就餐问题" class="headerlink" title="1.5.1. 哲学家就餐问题"></a>1.5.1. 哲学家就餐问题</h4><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs pf"><span class="hljs-comment">#define N			5</span><br><span class="hljs-comment">#define LEFT		(i+N-1) % N</span><br><span class="hljs-comment">#define RIGHT		(i+1) % N</span><br><span class="hljs-comment">#define THINKING	0</span><br><span class="hljs-comment">#define HUNGRY		1</span><br><span class="hljs-comment">#define EATING		2</span><br>typedef int segmaphore;<br>int <span class="hljs-keyword">state</span>[N];<br>semaphore mutex = <span class="hljs-number">1</span>;<br>semaphore s[N];<br><br>void philosopher(int i)&#123;<br>	while(true)&#123;<br>		// 哲学家进程<br>	&#125;<br>&#125;<br><br>void take_forks(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = HUNGRY;<br>	test(i);<br>	V(&amp;mutex);<br>	P(&amp;s[i]);<br>&#125;<br><br>void put_fork(int i)&#123;<br>	P(&amp;mutex);<br>	<span class="hljs-keyword">state</span>[i] = THINKING;<br>	test(LEFT);				// 检查左右是否可以吃(唤醒)<br>	test(RIGHT);<br>	V(&amp;mutex);<br>&#125;<br><br>void test(int i)&#123;<br>	if(<span class="hljs-keyword">state</span>[i] == HUNGRY &amp;&amp; <span class="hljs-keyword">state</span>[LEFT] != EATING &amp;&amp; <span class="hljs-keyword">state</span>[RIGHT] != EATING)&#123;<br>		<span class="hljs-keyword">state</span>[i] = EATING;<br>		V(&amp;s[i]);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="1-5-2-读者-写者问题"><a href="#1-5-2-读者-写者问题" class="headerlink" title="1.5.2. 读者-写者问题"></a>1.5.2. 读者-写者问题</h4><p>当写者进入时，其他进程禁止进入。</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">typedef <span class="hljs-built_in">int</span> semaphore;<br>semaphore mutex = <span class="hljs-number">1</span>;<br>semaphore db = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> rc = <span class="hljs-number">0</span>;						<span class="hljs-comment">// 正在读或写的进程数目</span><br>void reader(void)&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		rc = rc + <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(rc<span class="hljs-operator"> == </span><span class="hljs-number">1</span>)&#123;<br>			<span class="hljs-constructor">P(&amp;<span class="hljs-params">db</span>)</span>;<br>		&#125;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		read<span class="hljs-constructor">_data_base()</span>;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		rc = rc - <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">if</span>(rc<span class="hljs-operator"> == </span><span class="hljs-number">0</span>)&#123;<br>			<span class="hljs-constructor">V(&amp;<span class="hljs-params">db</span>)</span>;<br>		&#125;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">mutex</span>)</span>;<br>		use<span class="hljs-constructor">_data_read()</span>;<br>	&#125;<br>&#125;<br><br>void writer(void)&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>)&#123;<br>		think<span class="hljs-constructor">_up_data()</span>;<br>		<span class="hljs-constructor">P(&amp;<span class="hljs-params">db</span>)</span>;					<span class="hljs-comment">// 这里不需要mutex是因为reader中rc==1会P(&amp;db)</span><br>		write<span class="hljs-constructor">_data_base()</span>;<br>		<span class="hljs-constructor">V(&amp;<span class="hljs-params">db</span>)</span>;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="2-内存管理"><a href="#2-内存管理" class="headerlink" title="2. 内存管理"></a>2. 内存管理</h2>
+<h2 id="2-内存管理"><a href="#2-内存管理" class="headerlink" title="2. 内存管理"></a>2. 内存管理</h2><h3 id="2-1-无存储器抽象"><a href="#2-1-无存储器抽象" class="headerlink" title="2.1. 无存储器抽象"></a>2.1. 无存储器抽象</h3><p>​		即使没有存储器抽象，同时运行多个程序也是可能的，比如交换技术。除此之外，在特殊的硬件帮助下，还可以采用以下技术:</p>
+<p>​		(早期的IBM 360)内存被划分为2KB的块，每块分配一个4位的保护键，只有操作系统有权修改。PSW (Program Status Word，程序状态字) 中存有4位码。当运行中的进程访问与其PSW不同的内存时，硬件会捕获这一事件。</p>
+<p>​		然而，仍然需要解决使用绝对地址的问题。IBM 360使用<strong>静态重定位</strong>技术修改它，即在地址上加一常数，但它会减慢装载速度。</p>
+<h3 id="2-2-地址空间"><a href="#2-2-地址空间" class="headerlink" title="2.2. 地址空间"></a>2.2. 地址空间</h3><p>​		地址空间是一个进程可用于寻址内存的一套地址的集合。每个进程有一个独立的地址空间(除了特殊情况下需要共享)。</p>
+<h4 id="2-2-1-基址寄存器与界限寄存器"><a href="#2-2-1-基址寄存器与界限寄存器" class="headerlink" title="2.2.1. 基址寄存器与界限寄存器"></a>2.2.1. 基址寄存器与界限寄存器</h4><p>​		使用<strong>动态重定位</strong>技术，将程序的起始物理地址加载到基址寄存器中，程序的长度加载到界限寄存器中。每次访问内存会自动加上基址值，同时检查是否大于等于界限寄存器中的值。</p>
+<p>​		这样的方法需要加法电路，会由于进位传递时间的问题，在没有特殊电路时显得较慢。</p>
+<h4 id="2-2-2-交换技术"><a href="#2-2-2-交换技术" class="headerlink" title="2.2.2. 交换技术"></a>2.2.2. 交换技术</h4><p>​		如果进程的数据段可以增长，需要把增长的进程移动到足够大的存储区，或将相邻的进程交换出去。当大部分进程都需要在运行时增长时，可以在换入或移动进程时为其分配额外的内存，但需要注意，交换时应避免交换未被使用的内存。</p>
+<p>​		若有两个可增长的段，如数据段和堆栈段，可以使得数据段向上增长而堆栈段向下增长。如果用完，可以移动到更大的存储区，或杀死进程。</p>
+<h4 id="2-2-3-空闲内存管理"><a href="#2-2-3-空闲内存管理" class="headerlink" title="2.2.3. 空闲内存管理"></a>2.2.3. 空闲内存管理</h4><p>当内存需要动态分配时，操作系统需要对其进行管理。</p>
+<ul>
+<li><p>位图</p>
+<p>内存被划分为若干分配单元，对应于位图中的每一位。</p>
+<p>需要搜索连续为0的串，这是耗时的，可能跨越字的边界。</p>
+</li>
+<li><p>链表</p>
+<ul>
+<li><p>可以使用如下的双向列表:</p>
+<ul>
+<li>P(进程) &#x2F; H(空闲区)</li>
+<li>起始位置</li>
+<li>长度</li>
+</ul>
+<p>也可以将进程和空闲区形成两个链表，这将提高寻找空闲区的四种算法的速度，但会使得内存释放速度减慢。可以按照大小对其排序来提高某些适配算法的速度，(如首次适配，下次适配则无意义)。</p>
+</li>
+<li><p>移出时可能引起节点的合并</p>
+</li>
+<li><p>替换时</p>
+<ul>
+<li><p>首次适配</p>
+<p>从头节点开始搜索满足条件的节点</p>
+</li>
+<li><p>下次适配</p>
+<p>从上次搜索位置继续搜索</p>
+</li>
+<li><p>最佳适配</p>
+<p>搜索整个链表</p>
+</li>
+<li><p>最差适配</p>
+<p>总是分配最大的空闲区(因为最佳适配会产生许多小的空闲区)</p>
+</li>
+</ul>
+<p>还有一种分配算法称为<strong>快速适配</strong>算法，它为常用大小的空闲区维护一个单独的链表。如一个n项的表，每个表项都是一个链表。其第一项指向4KB空闲区链表，第二项指向8KB空闲区链表，第三项指向12KB链表……21KB的空闲区既可以存放在20KB的链表中，也可以放在一个单独的特别的链表中。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-3-虚拟内存"><a href="#2-3-虚拟内存" class="headerlink" title="2.3. 虚拟内存"></a>2.3. 虚拟内存</h3><p>注:这种方法和交换技术都是处理内存超载的方法，放在这级标题只是为了方便</p>
+<p>​		20世纪60年代常用的解决方法:将程序分为许多个片段，称为<strong>覆盖</strong>。程序开始执行时，将覆盖管理模块装入内存，该管理模块立即装入并运行覆盖0。执行完成后通知管理模块装入覆盖1，可占用覆盖0上方位置(若有可用位置)，或占用覆盖0。</p>
+<p>​		覆盖技术要求<u>程序员</u>必须把一个程序划分为不同的程序段，并规定好它们的执行和覆盖顺序，<u>操作系统</u>根据程序员提供的覆盖结构来完成程序段之间的覆盖。</p>
+<p>​		程序员划分覆盖时容易出错，进而想将全部工作交由计算机完成，这个技术称为虚拟内存。其基本思想是:每个程序拥有自己的地址空间，这个空间被分割成多个块，每一块被称为一<strong>页</strong>或<strong>页面</strong>。每一页有连续的地址范围。这些页被映射到物理内存，但并不是所有的页都必须在内存中才能运行程序。当程序引用一部分在物理内存中的地址空间时，由硬件立刻执行必要的映射。当程序引用到一段不在物理内存中的地址空间时，由操作系统负责将缺失的部分装入物理内存并重新执行失败的指令。</p>
+<h4 id="2-3-1-分页"><a href="#2-3-1-分页" class="headerlink" title="2.3.1. 分页"></a>2.3.1. 分页</h4><p>大部分虚拟内存系统都采用分页技术。</p>
+<p>由程序产生的地址叫做虚拟地址，他们构成了一个虚拟地址空间。</p>
+<p>使用虚拟内存时，虚拟地址被送到<strong>内存管理单元</strong>(Memory Management Unit,  MMU)，<u>MMU把虚拟地址映射为物理地址</u>。MMU通常作为CPU芯片的一部分，但它多是独立的芯片。</p>
+<p>RAM和磁盘之间的交换总是以整个页面为单元进行的，页面大小可能会有所不同。处理器根据操作系统认为合适的方式，支持对不同大小的页面的混合使用和匹配。</p>
+<p>当程序访问了未映射的页面，<u>MMU使CPU陷入到内核</u>，这个陷阱叫做<strong>缺页中断</strong>或<strong>缺页错误</strong>，操作系统选择一个页框，并将它的内容写入磁盘，把要访问的页面读入到收回的页框中，修改映射关系(包括放弃的虚拟页面的表项和装入的虚拟页面的表项)</p>
+<h4 id="2-3-2-页表"><a href="#2-3-2-页表" class="headerlink" title="2.3.2. 页表"></a>2.3.2. 页表</h4><p>对单个页表项，其结构与机器密切相关，可以规定其结构如下</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/2018040414344052.jpg" srcset="/img/loading.gif" lazyload alt="一个典型的页表项"></p>
+<ul>
+<li><p>一些位的说明</p>
+<ul>
+<li><p>保护位</p>
+<p>指出页允许什么类型的访问，读、写、执行</p>
+</li>
+<li><p>修改和访问位</p>
+<p>在写入时自动设置修改位(也被称为<strong>脏位</strong>)，页面是脏的则需要写回磁盘</p>
+<p>无论读写，在访问时都会设置访问位，便于淘汰不使用的页</p>
+</li>
+<li><p>高速缓存禁止位</p>
+<p>对映射到设备寄存器而非常规内存的特殊页面，主要是对内存I&#x2F;O映射的机器。</p>
+<p>访问时不经过高速缓存，而是直接访问数据。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-3-加速分页过程"><a href="#2-3-3-加速分页过程" class="headerlink" title="2.3.3. 加速分页过程"></a>2.3.3. 加速分页过程</h4><p>在分页系统中主要考虑两个问题</p>
+<ul>
+<li>虚拟地址到物理地址的映射必须非常快</li>
+<li>如果虚拟地址空间很大，页表也会很大</li>
+</ul>
+<hr>
+<p>每次访问内存都需要虚拟地址到物理地址的映射，因此页表查询操作必须较短时间内完成。</p>
+<ul>
+<li>如果将页表存储在<u>寄存器</u>中形成单一页表，启动进程时将保存在<u>内存</u>中的页表副本载入到寄存器中，则进程运行中不必再为页表而访问内存，但缺点是代价高昂，且每次切换上下文必须重新装载</li>
+<li>如果整个页表都存储在内存中，切换进程仅需要切换一个起始地址，但在执行指令时需要多次访问内存</li>
+</ul>
+<p>因此设计了<strong>转换检测缓冲区</strong>(Translation Lookaside Buffer, TLB)，也称相联存储器或快表，通常包含在MMU中。</p>
+<p>其包含了少量的表项，通常不超过256个，每个表项记录了一个页面相关的信息。其工作过程如下</p>
+<ul>
+<li><p>硬件将虚拟页号与TLB中所有表项同时(并行)进行匹配</p>
+</li>
+<li><p>发现一个有效的匹配</p>
+<ul>
+<li>违反保护位，产生一个保护错误</li>
+<li>不违反保护位，将页框号直接取出</li>
+</ul>
+<p>页号不在TLB中</p>
+<ul>
+<li>进行正常的页表查询，并在TLB中淘汰一个表项替代之</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>上述过程中页表替换操作由MMU硬件来实现，但也可以根据软件实现。当TLB大到(如64个表项)可以减少缺失率时，TLB的软件管理就会足够有效。</p>
+<p>在TLB访问失败时，会生成一个TLB失效并将问题交由操作系统解决。系统先找到该页面，然后从TLB中删除一个项，并装载一个新的项，最后在执行先前出错的程序。但上述处理需要在有限几条指令中完成，因为TLB失效更加频繁。</p>
+<p>使用软件进行TLB管理时，需要区分两种不同的TLB失效。</p>
+<ul>
+<li>页面在内存中而不在TLB中，将产生<strong>软失效</strong></li>
+<li>页面不在内存中(当然也不在TLB中)，将产生<strong>硬失效</strong></li>
+</ul>
+<p>但实际情况可能更为复杂，如在页表中未找到页(<u>不是TLB访问失败</u>)</p>
+<ul>
+<li><p>所需页面就在内存中，但未映射到进程的页表中。如该页面可能由其他进程从硬盘中调入内存。这是典型的软失效，称为<strong>次要缺页错误</strong>。此时只需要将其加入到进程页表中。</p>
+</li>
+<li><p>需要从硬盘重新调入页面，<strong>严重缺页错误</strong></p>
+</li>
+<li><p>访问了非法地址，系统报告<strong>段错误</strong></p>
+</li>
+</ul>
+<h4 id="2-3-4-针对大内存的页表"><a href="#2-3-4-针对大内存的页表" class="headerlink" title="2.3.4. 针对大内存的页表"></a>2.3.4. 针对大内存的页表</h4><ul>
+<li><p>多级页表</p>
+<p>将虚拟地址划分为若干域。</p>
+<ul>
+<li><p>以32位虚拟地址的多级页表为例：</p>
+<p>MMU首先提取出PT1域并把该值作为访问顶级页表的索引。索引得到的表项中含有二级页表的地址或页框号(<u>页表也是个页</u>)，再有PT2域作为访问二级页表的索引，得到物理页框号。</p>
+</li>
+</ul>
+</li>
+</ul>
+
                 
               </div>
             
