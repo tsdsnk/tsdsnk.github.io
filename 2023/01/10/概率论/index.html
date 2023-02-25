@@ -24,8 +24,9 @@
 <meta property="og:description" content="1. 随机事件与概率1.1. 随机事件 随机试验 满足如下三个条件的试验称为随机试验，简称试验  试验可在相同的条件下重复进行 试验的所有可能结果不止一个，而且还是事先已知的 每次试验总是恰好出现这些可能结果中的一个，但是究竟那个结果在实验前不能确切预言   基本事件，也称样本点 每一个可能的结果  样本空间 全部基本事件的集合  事件 基本事件的集合，即样本空间的某个子集   1.2. 事件的关">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E5%9B%BE%E7%89%8720230111181713.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230221171627.png">
 <meta property="article:published_time" content="2023-01-10T05:44:04.000Z">
-<meta property="article:modified_time" content="2023-01-11T12:31:44.978Z">
+<meta property="article:modified_time" content="2023-02-22T03:42:50.082Z">
 <meta property="article:author" content="tsdsnk">
 <meta property="article:tag" content="考研">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.3k 字
+          12k 字
         
       </span>
     
@@ -445,7 +446,7 @@
 <h2 id="3-随机变量及其分布"><a href="#3-随机变量及其分布" class="headerlink" title="3. 随机变量及其分布"></a>3. 随机变量及其分布</h2><h3 id="3-1-随机变量"><a href="#3-1-随机变量" class="headerlink" title="3.1. 随机变量"></a>3.1. 随机变量</h3><p>​		把试验中的观察对象用$X$表示，那么$X$随着试验的重复可以取不同值，且无法确切预言，因此称之为随机变量。由于$X$是随着试验的结果(基本事件$e$)不同而变化的，因此$X$实际是基本事件$e$的函数，即$X&#x3D;X(e)$，如:</p>
 <p>样本空间$S&#x3D;{\text{正},\text{反}}$，则<br>$$<br>X &#x3D; \left{<br>\begin{aligned}<br>1, \qquad\text{正面出现} \<br>0, \qquad\text{反面出现}<br>\end{aligned}<br>\right.<br>$$<br>由上所述，给出随机变量的定义</p>
 <p>​		设$E$是随机试验，它的样本空间是$S$。如果对$S$中的每个基本事件$e$，都有唯一的实数值$X(e)$与之对应，则称$X(e)$为随机变量，简记为$X$</p>
-<h4 id="3-2-离散随机变量"><a href="#3-2-离散随机变量" class="headerlink" title="3.2. 离散随机变量"></a>3.2. 离散随机变量</h4><p>​		只能取有限个值或可列无穷多个值的随机变量$X$称为离散随机变量。</p>
+<h3 id="3-2-离散随机变量"><a href="#3-2-离散随机变量" class="headerlink" title="3.2. 离散随机变量"></a>3.2. 离散随机变量</h3><p>​		只能取有限个值或可列无穷多个值的随机变量$X$称为离散随机变量。</p>
 <p>​		如$P(X&#x3D;x_k)&#x3D;p_k,(k&#x3D;1,2,\cdots)$的形式称为离散随机变量$X$的概率分布列，或简称分布列(分布律)，概率质量函数,它也可以用表格的形式表现。</p>
 <hr>
 <p>​		$X$ 			|			$x_1$				$x_2$				$\cdots$				$x_4$				$\cdots$</p>
@@ -498,8 +499,8 @@
 </li>
 </ul>
 <h3 id="3-4-连续型随机变量"><a href="#3-4-连续型随机变量" class="headerlink" title="3.4. 连续型随机变量"></a>3.4. 连续型随机变量</h3><h4 id="3-4-1-连续型随机变量、概率密度"><a href="#3-4-1-连续型随机变量、概率密度" class="headerlink" title="3.4.1. 连续型随机变量、概率密度"></a>3.4.1. 连续型随机变量、概率密度</h4><p>若随机变量$X$的分布函数$F(X)$是可微的，则其导数<br>$$<br>f(x)&#x3D;F^{‘}(x)&#x3D;\lim_{\Delta x\to0^+}\frac{P(x\leq X\leq x+\Delta x)}{\Delta x}\geq 0<br>$$<br>称为概率密度，但有些分布函数$F(x)$不一定可微，故采用如下定义</p>
-<p>设$F(x)$是随机变量$X$的分布函数，若存在一个非负的函数$f(x)$，对任何实数$x$有<br>$$<br>F(x)&#x3D;\int_{-\infty}^x f(t)dt<br>$$<br>则称$X$为连续型随机变量，同时称$f(x)$为$X$的概率密度函数，简称概率密度</p>
-<p>连续型随机变量满足</p>
+<p>设$F(x)$是随机变量$X$的分布函数，若存在一个非负的函数$f(x)$，对任何实数$x$有<br>$$<br>F(x)&#x3D;\int_{-\infty}^x f(t)dt<br>$$<br>则称$X$为连续型随机变量，同时称$f(x)$为$X$的概率密度函数，简称概率密度。</p>
+<p>不难证明下面的函数形式满足$F(x)&#x3D;\int _{-\infty} ^x f(t)dt$，这种方法称为<strong>分布函数法</strong><br>$$<br>f(x)&#x3D;\left{<br>\begin{aligned}<br>&amp;F^{‘}(x), &amp; F^{‘}(x)\text{存在}\<br>&amp;0, &amp;F^{‘}(x)\text{不存在}<br>\end{aligned}<br>\right.<br>$$<br>连续型随机变量满足</p>
 <ul>
 <li><p>在整个实轴上，$F(x)$是连续的</p>
 </li>
@@ -517,7 +518,7 @@
 <p>相应的分布函数为<br>$$<br>F(x)&#x3D;\left{<br>\begin{aligned}<br>&amp;0&amp;x&lt;a \<br>&amp;\frac{x-a}{b-a}&amp;a\leq x&lt;b\<br>&amp;1&amp;x\geq b<br>\end{aligned}<br>\right.<br>$$</p>
 <h4 id="3-4-3-指数分布"><a href="#3-4-3-指数分布" class="headerlink" title="3.4.3. 指数分布"></a>3.4.3. 指数分布</h4><p>设连续型随机变量$X$的概率密度为<br>$$<br>f(x)&#x3D;\left{<br>\begin{aligned}<br>&amp;0 &amp;x\leq 0\<br>&amp;\lambda e^{-\lambda x}&amp;x&gt;0<br>\end{aligned}<br>\right.<br>$$<br>其中$\lambda$是正常数，则称$X$是服从参数为$\lambda$的指数分布</p>
 <p>相应的分布函数为<br>$$<br>F(x)&#x3D;<br>\left{<br>\begin{aligned}<br>&amp;0 &amp;x\leq 0 \<br>&amp;1-e^{-\lambda x} &amp;x&gt;0<br>\end{aligned}<br>\right.<br>$$</p>
-<h3 id="3-5-正态分布"><a href="#3-5-正态分布" class="headerlink" title="3.5. 正态分布"></a>3.5. 正态分布</h3><ul>
+<h4 id="3-4-4-正态分布"><a href="#3-4-4-正态分布" class="headerlink" title="3.4.4. 正态分布"></a>3.4.4. 正态分布</h4><ul>
 <li><p>定义</p>
 <p>若连续型随机变量$X$的概率密度为<br>$$<br>f(x)&#x3D;\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}},\quad -\infty &lt;x &lt; +\infty<br>$$<br>其中$\mu,\sigma$为常数，且$\sigma &gt;0$则称$X$是服从参数为$\mu,\sigma$的正态分布，也称$X$为正态变量，记作$X\sim N(\mu,\sigma)$</p>
 <p>若$\mu&#x3D;0,\sigma&#x3D;1$，则称为标准正态分布</p>
@@ -526,6 +527,53 @@
 <p>记标准正态分布的分布函数为$\Phi(x)$，则一般正态分布$N(\mu,\sigma)$的分布函数$F(x)$<br>$$<br>F(x)&#x3D;\Phi(\frac{x-\mu}{\sigma})<br>$$</p>
 </li>
 </ul>
+<h3 id="3-5-随机变量函数的分布"><a href="#3-5-随机变量函数的分布" class="headerlink" title="3.5. 随机变量函数的分布"></a>3.5. 随机变量函数的分布</h3><p>设随机变量$Y$是随机变量$X$的函数，且$Y&#x3D;g(X)$</p>
+<ul>
+<li><p>$X$为离散的，只需按照加法公式计算后相加</p>
+</li>
+<li><p>$X$是连续型随机变量，其概率密度为$f_X(x)$，求随机变量$Y$的概率密度$f_Y(y)$</p>
+<p>采用分布函数法，先求$F_Y(y)$</p>
+<ul>
+<li>已知$X\sim N(\mu, \sigma^2)$，求$Y&#x3D;\frac{X-\mu}{\sigma}$的概率密度<br>$$<br>F_Y(y)&#x3D;P(Y\leq y)&#x3D;P(X\leq \sigma y+\mu)&#x3D;F_X(\sigma y+\mu)<br>$$<br>可以看出$F_Y(y)$处处连续，故<br>$$<br>f_Y(y)&#x3D;\sigma f_X(\sigma y + \mu)&#x3D; \sigma \frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(\sigma y+\mu-\mu)^2}{2\sigma^2}}&#x3D;\frac{1}{\sqrt{2\pi}}e^{-\frac{y^2}{2}}<br>$$</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-多维随机变量及其分布"><a href="#4-多维随机变量及其分布" class="headerlink" title="4. 多维随机变量及其分布"></a>4. 多维随机变量及其分布</h2><h3 id="4-1-一些定义"><a href="#4-1-一些定义" class="headerlink" title="4.1. 一些定义"></a>4.1. 一些定义</h3><h4 id="4-1-1-多维随机变量"><a href="#4-1-1-多维随机变量" class="headerlink" title="4.1.1. 多维随机变量"></a>4.1.1. 多维随机变量</h4><p>​		若$X_1(e),X_2(e),\cdots, X_n(e)$是定义在同一个样本空间上$S$上的$n$个随机变量，$e \in S$，则由他们构成一个$n$维向量$(X_1(e),X_2(e),\cdots, X_n(e))$称为**$n$维随机变量**</p>
+<h4 id="4-1-2-分布函数"><a href="#4-1-2-分布函数" class="headerlink" title="4.1.2. 分布函数"></a>4.1.2. 分布函数</h4><p>设$(X,Y)$为二维随机变量，$x,y$为任意实数，则二元函数<br>$$<br>F(x,y)&#x3D;P(X\leq x, Y\leq y)<br>$$<br>称为$(X,Y)$的分布函数，或称为$X$和$Y$的联合分布函数</p>
+<p>易知<br>$$<br>F(+\infty,+\infty)&#x3D;1,F(-\infty,+\infty)&#x3D;F(+\infty,-\infty)&#x3D;0<br>$$</p>
+<p><font color="red">注意：求$x_1&lt;X\leq x_2, y_1&lt;Y\leq y_2$的概率时按如下公式</font><br>$$<br>\begin{aligned}<br>&amp;P\left(x_1&lt;X\leq x_2,y_2&lt;Y\leq y_2\right)\<br>&#x3D;&amp;F(x_2,y_2)-F(x_2,y_1)-F(x_1,y_2)+F(x_1,y_1)<br>\end{aligned}<br>$$</p>
+<h4 id="4-1-3-边缘分布函数"><a href="#4-1-3-边缘分布函数" class="headerlink" title="4.1.3. 边缘分布函数"></a>4.1.3. 边缘分布函数</h4><p>如果二维随机变量$(X,Y)$的分布函数$F(X,Y)$为已知，那么<br>$$<br>F_X(x)&#x3D;P(X\leq x, y&lt;+\infty) &#x3D; F(x, +\infty)<br>$$</p>
+<h3 id="4-2-二维离散型随机变量"><a href="#4-2-二维离散型随机变量" class="headerlink" title="4.2. 二维离散型随机变量"></a>4.2. 二维离散型随机变量</h3><p>可利用表格形式表示</p>
+<p><img src="https://cdn.jsdelivr.net/gh/tsdsnk/imgs@main/img/QQ%E6%88%AA%E5%9B%BE20230221171627.png" srcset="/img/loading.gif" lazyload alt="分布列及边缘分布"></p>
+<h3 id="4-3-二维连续型随机变量"><a href="#4-3-二维连续型随机变量" class="headerlink" title="4.3. 二维连续型随机变量"></a>4.3. 二维连续型随机变量</h3><ul>
+<li><p>联合概率密度</p>
+<p>设二维随机变量$(X,Y)$的分布函数为$F(x,y)$。若存在非负函数$f(x,y)$使得对任意实数$x,y$有<br>$$<br>F(x,y)&#x3D;\int_{-\infty}^{x}\int_{-\infty}^y f(u,v)dudv<br>$$<br>则称$(X,Y)$为二维连续随机变量，并称$f(x,y)$为二维随机变量$(X,Y)$的<strong>概率密度</strong>，或称$X$与$Y$的联合概率密度</p>
+<p>若$f(x,y)$在点$(x,y)$处连续，则<br>$$<br>\frac{\part^2F(x,y)}{\part x\part y} &#x3D; f(x,y)<br>$$</p>
+</li>
+<li><p>边缘概率密度<br>$$<br>f_X(x)&#x3D;\int_{-\infty}^{+\infty}f(x,y)dy<br>$$</p>
+<p>$$<br>f_Y(y)&#x3D;\int_{-\infty}^{+\infty}f(x,y)dx<br>$$</p>
+</li>
+</ul>
+<h3 id="4-4-随机变量的独立性"><a href="#4-4-随机变量的独立性" class="headerlink" title="4.4. 随机变量的独立性"></a>4.4. 随机变量的独立性</h3><ul>
+<li><p>定义</p>
+<p>设$F(x,y),F_X(x),F_Y(y)$依次为$(X,Y),X,Y$的分布函数。若对任意实数$x,y$成立<br>$$<br>F(x,y)&#x3D;F_X(x)F_Y(y)<br>$$<br>则称$X$与$Y$是相互独立的</p>
+</li>
+<li><p>充要条件</p>
+<p>$f_X(x)f_Y(y)$是二维随机变量的概率密度</p>
+</li>
+</ul>
+<h3 id="4-5-二维随机变量函数的分布"><a href="#4-5-二维随机变量函数的分布" class="headerlink" title="4.5. 二维随机变量函数的分布"></a>4.5. 二维随机变量函数的分布</h3><p>离散型随机变量与连续型随机变量(求分布函数)均与一维类似</p>
+<p>一些结论</p>
+<ul>
+<li>$X,Y$<u>独立</u>，且$X\sim P(\lambda_1),Y\sim P(\lambda_2)$，则$X+Y\sim P(\lambda_1+\lambda_2)$</li>
+<li>$X,Y$<u>独立</u>，且$X\sim N(\mu_1,\sigma_1^2),Y\sim N(\mu_2,\sigma_2^2)$，则$X+Y\sim N(\lambda_1+\lambda_2,\sigma_1^2+\sigma_2^2)$</li>
+</ul>
+<h4 id="4-5-1-瑞利分布"><a href="#4-5-1-瑞利分布" class="headerlink" title="4.5.1. 瑞利分布"></a>4.5.1. 瑞利分布</h4><p>设$X，Y$是<u>相互独立</u>的且服从同一正态分布$N(0,\sigma^2)$的随机变量，则$Z&#x3D;\sqrt{X^2+Y^2}$服从瑞利分布</p>
+<blockquote>
+<p>考虑$Z$的分布函数</p>
+<p>当$z\leqslant 0$时，$F_Z(z)&#x3D;0$</p>
+<p>当$z&gt;0$时<br>$$<br>F_Z(z)&#x3D;P(\sqrt{X^2+Y^2}\leqslant z)&#x3D;\iint\limits_{\sqrt{x^2+y^2}\leqslant z}f(x,y)dxdy<br>$$<br>由于$X,Y$相互独立<br>$$<br>F_Z(z)&#x3D;\iint\limits_{\sqrt{x^2+y^2}\leqslant z}f_X(x)f_Y(y)dxdy&#x3D;\iint\limits_{\sqrt{x^2+y^2}\leqslant z}\frac{1}{2\pi\sigma^2}e^{-\frac{x^2+y^2}{2\sigma^2}}dxdy<br>$$<br>令$x&#x3D;\rho\cos\theta,y&#x3D;\rho\sin\theta$，得<br>$$<br>F_Z(z)&#x3D;\iint\limits_{\rho \leqslant z}\frac{1}{2\pi\sigma^2}e^{-\frac{\rho^2}{2\sigma^2}}\rho d\rho d\theta &#x3D; 1-e^{-\frac{z^2}{2\sigma^2}}<br>$$<br>因此$Z$的分布函数为<br>$$<br>F_Z(z)&#x3D;\left{<br>\begin{aligned}<br>&amp;1-e^{-\frac{z^2}{2\sigma^2}}, &amp;z&gt;0\<br>&amp;0, &amp;z\leqslant0<br>\end{aligned}<br>\right.<br>$$<br>概率密度为<br>$$<br>f_Z(z)&#x3D;\left{\begin{aligned}<br>&amp;\frac{z}{\sigma^2}e^{-\frac{z^2}{2\sigma^2}}, &amp;z&gt;0\<br>&amp;0,&amp;z\leqslant 0<br>\end{aligned}\right.<br>$$</p>
+</blockquote>
 
                 
               </div>
@@ -551,6 +599,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/02/24/%E7%BA%BF%E4%BB%A3/" title="线代">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">线代</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
